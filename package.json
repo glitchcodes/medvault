@@ -1,0 +1,37 @@
+{
+  "name": "nuxt-app",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "build-dev": "nuxt dev",
+    "dev": "tauri dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@nuxt/eslint": "1.9.0",
+    "@nuxt/test-utils": "3.19.2",
+    "@nuxt/ui": "4.0.1",
+    "@tailwindcss/vite": "^4.1.14",
+    "@tauri-apps/api": "^2.8.0",
+    "@tauri-apps/plugin-os": "~2.3.1",
+    "eslint": "^9.37.0",
+    "firebase": "^12.3.0",
+    "nuxt": "^4.1.2",
+    "nuxt-vuefire": "1.1.0",
+    "sass": "^1.93.2",
+    "tailwindcss": "^4.1.14",
+    "typescript": "^5.9.3",
+    "vue": "^3.5.22",
+    "vue-router": "^4.5.1",
+    "vuefire": "^3.2.2",
+    "zod": "^4.1.11"
+  },
+  "packageManager": "pnpm@10.12.1+sha512.f0dda8580f0ee9481c5c79a1d927b9164f2c478e90992ad268bbb2465a736984391d6333d2c327913578b2804af33474ca554ba29c04a8b13060a717675ae3ac",
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.8.4"
+  }
+}
