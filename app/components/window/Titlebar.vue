@@ -17,7 +17,7 @@
 </script>
 
 <template>
-  <div data-tauri-drag-region class="bg-black/50 fixed flex justify-between items-center w-full min-h-[56px] top-0 left-0 z-50 pl-4 sm:pl-6 lg:pl-8 select-none fixed">
+  <div data-tauri-drag-region class="bg-black/50 flex justify-between items-center w-full min-h-[56px] top-0 left-0 z-50 pl-4 sm:pl-6 lg:pl-8 select-none fixed">
     <div class="flex flex-1 items-center gap-2" data-tauri-drag-region>
       <!-- Title -->
       <p class="text-white">
