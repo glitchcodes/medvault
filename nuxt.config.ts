@@ -24,13 +24,13 @@ export default defineNuxtConfig({
 
   vuefire: {
     config: {
-      apiKey: "AIzaSyACFpZtlOcsgAEs_YAKcn5y-CfEYMBrGqI",
-      authDomain: "patient-sync-19e6a.firebaseapp.com",
-      appId: "1:515560366206:web:d56b9ebcf27a674143382f",
-      projectId: "patient-sync-19e6a",
-      storageBucket: "patient-sync-19e6a.firebasestorage.app",
-      messagingSenderId: "515560366206",
-      measurementId: "G-W5FT5V2QH2"
+      apiKey: process.env.FIREBASE_API_KEY,
+      authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+      appId: process.env.FIREBASE_APP_ID,
+      projectId: process.env.FIREBASE_PROJECT_ID,
+      storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+      measurementId: process.env.FIREBASE_MEASUREMENT_ID,
     },
     auth: {
       enabled: true
