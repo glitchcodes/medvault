@@ -1,15 +1,16 @@
 <script setup lang="ts">
-
+  const profileStore = useProfileStore();
+  const firstName = computed(() => profileStore.profile?.first_name || "Guest");
 </script>
 
 <template>
-  <section>
+  <UPage>
     <div class="flex justify-between items-center mb-8">
       <div>
         <h1 class="text-2xl font-bold">
           Dashboard
         </h1>
-        <p>Welcome back, Vincent Tampos.</p>
+        <p>Welcome back, {{ firstName }}</p>
       </div>
       <CurrentDateTime />
     </div>
@@ -43,7 +44,7 @@
         </template>
       </ButtonQuickAction>
     </div>
-  </section>
+  </UPage>
 </template>
 
 <style scoped lang="scss">

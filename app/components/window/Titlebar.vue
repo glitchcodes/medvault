@@ -14,6 +14,9 @@
   onUnmounted(() => {
     unlisten()
   });
+
+  // Firebase
+  const user = useCurrentUser();
 </script>
 
 <template>
@@ -31,9 +34,9 @@
     </div>
 
     <!-- Account Menu -->
-<!--    <AccountMenu v-if="user" class="mr-4 p-2" />-->
+    <AccountMenu v-if="user" class="mr-4 p-2" />
 
-    <UButton to="/login" color="info" variant="soft">
+    <UButton v-else to="/login" color="info" variant="soft">
       Sign In
     </UButton>
     <!-- END Account Menu -->

@@ -1,6 +1,9 @@
 <script setup lang="ts">
   import * as z from "zod";
+  import { signInWithEmailAndPassword } from "firebase/auth";
   import type { FormSubmitEvent } from "@nuxt/ui";
+
+  const toast = useToast();
 
   const authSchema = z.object({
     email: z.string(),
@@ -9,7 +12,8 @@
 
   type AuthSchema = z.infer<typeof authSchema>;
 
-  // const auth = useFirebaseAuth()!;
+  const auth = useFirebaseAuth()!;
+  const profileStore = useProfileStore();
 
   const authForm = reactive({
     email: undefined,
@@ -17,8 +21,44 @@
   });
 
   const isSubmitting = ref(false);
-  const handleSignIn = (event: FormSubmitEvent<AuthSchema>) => {
+  const handleSignIn = async (event: FormSubmitEvent<AuthSchema>) => {
+    isSubmitting.value = true;
 
+    signInWithEmailAndPassword(auth, event.data.email, event.data.password)
+      .then(() => {
+        // Fetch profile
+        profileStore.fetchProfile();
+        // Show a welcome message
+        toast.add({ title: 'Welcome back, ' + profileStore.full_name + '!' })
+        // Redirect to dashboard
+        navigateTo('/')
+      })
+      .catch((e) => {
+        const errorCode = e.code;
+        let errorMessage: string;
+
+        switch (errorCode) {
+          case 'auth/user-not-found':
+          case 'auth/invalid-credential':
+            errorMessage = 'Incorrect email or password.';
+            break;
+          case 'auth/too-many-requests':
+            errorMessage = 'Too many attempts. Please try again later.';
+            break;
+          case 'auth/user-disabled':
+            errorMessage = 'Your account has been disabled. Please contact support.';
+            break;
+          case 'auth/network-request-failed':
+            errorMessage = 'Network error. Please check your internet connection.';
+            break;
+          default:
+            errorMessage = 'Something went wrong. Please try again.';
+        }
+
+        toast.add({ title: errorMessage })
+        console.error(e);
+      })
+      .finally(() => isSubmitting.value = false);
   }
 </script>
 

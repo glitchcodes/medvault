@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/test-utils',
     'nuxt-vuefire',
+    "@pinia/nuxt"
   ],
   vite: {
     plugins: [
